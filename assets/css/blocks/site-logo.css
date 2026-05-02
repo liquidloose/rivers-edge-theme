@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/site-logo block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-site-logo.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

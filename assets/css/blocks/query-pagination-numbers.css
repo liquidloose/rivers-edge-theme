@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/query-pagination-numbers block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-query-pagination-numbers.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

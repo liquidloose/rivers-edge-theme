@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/template-part block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-template-part.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

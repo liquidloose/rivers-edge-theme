@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/button block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-button.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

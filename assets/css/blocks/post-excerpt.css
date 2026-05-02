@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/post-excerpt block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-post-excerpt.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

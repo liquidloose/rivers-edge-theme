@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/comment-template block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-comment-template.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

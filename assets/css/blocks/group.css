@@ -1,0 +1,45 @@
+/**
+ * Group block style variations
+ */
+
+/* Rivers Edge base variation (registered for core/group with other theme layouts below) */
+.wp-block-group.is-style-rivers-edge {
+	/* Add layout tokens when using the Rivers Edge style */
+}
+
+/* Reasons Why style */
+
+@media screen and (max-width: 950px) {
+
+    .is-style-reasons-why-and-contact>div {
+        flex-direction: column !important;
+        display: flex !important;
+    }
+
+    .is-style-friendly-web>div {
+        flex-direction: column !important;
+        display: flex !important;
+    }
+
+    .wp-block-columns.are-vertically-aligned-center.is-layout-flex.wp-container-core-columns-is-layout-be969680.wp-block-columns-is-layout-flex {
+        padding-bottom: unset !important;
+    }
+
+    .is-style-core-services>div {
+        flex-direction: column !important;
+        display: flex !important;
+    }
+
+    footer .is-style-footer-group .is-layout-flex {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .wp-block-columns.are-vertically-aligned-center.is-layout-flex.wp-container-core-columns-is-layout-be969680.wp-block-columns-is-layout-flex {
+        padding-bottom: unset !important;
+    }
+}

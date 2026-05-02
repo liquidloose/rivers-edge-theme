@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/paragraph block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-paragraph.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

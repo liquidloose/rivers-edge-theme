@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/post-featured-image block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-post-featured-image.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

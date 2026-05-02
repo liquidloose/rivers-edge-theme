@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/tag-cloud block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-tag-cloud.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

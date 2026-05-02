@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/preformatted block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-preformatted.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

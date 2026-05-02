@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/page-list block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-page-list.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

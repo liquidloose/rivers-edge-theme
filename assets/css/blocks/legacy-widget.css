@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/legacy-widget block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-legacy-widget.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}

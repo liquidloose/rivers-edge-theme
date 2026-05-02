@@ -1,0 +1,10 @@
+/**
+ * Rivers Edge — core/home-link block styles.
+ * Variation: .is-style-rivers-edge
+ *
+ * @package rivers-edge
+ */
+
+.wp-block-home-link.is-style-rivers-edge {
+	/* Theme overrides when this variation is selected */
+}
