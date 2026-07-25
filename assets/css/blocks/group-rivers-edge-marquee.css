@@ -1,0 +1,56 @@
+/**
+ * Group block — Rivers Edge Marquee (pure CSS)
+ *
+ * Required block structure in the editor:
+ *
+ *   Group  ← "Rivers Edge Marquee" style (outer, clips overflow)
+ *     └── Group  ← flex, nowrap (track — this element scrolls)
+ *           ├── Group  ← flex, nowrap (set 1 — your items)
+ *           └── Group  ← flex, nowrap (set 2 — duplicate of set 1)
+ *
+ * The track must contain two identical sets. CSS scrolls -50% so the loop
+ * is seamless. On ultra-wide screens, add enough items in each set that one
+ * set is wider than the viewport.
+ */
+
+.wp-block-group.is-style-rivers-edge-marquee {
+	--rivedge-marquee-duration: 30s;
+	overflow: hidden;
+	width: 100%;
+	max-width: 100%;
+}
+
+/* Track */
+.wp-block-group.is-style-rivers-edge-marquee > .wp-block-group {
+	display: flex;
+	flex-wrap: nowrap;
+	width: max-content;
+	animation: rivedge-marquee-scroll var(--rivedge-marquee-duration) linear infinite;
+}
+
+/* Each identical set */
+.wp-block-group.is-style-rivers-edge-marquee > .wp-block-group > .wp-block-group {
+	display: flex;
+	flex-shrink: 0;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.wp-block-group.is-style-rivers-edge-marquee > .wp-block-group > .wp-block-group > * {
+	flex-shrink: 0;
+}
+
+@keyframes rivedge-marquee-scroll {
+	from {
+		transform: translateX(100vw);
+	}
+	to {
+		transform: translateX(-1500px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-group.is-style-rivers-edge-marquee > .wp-block-group {
+		animation: none;
+	}
+}

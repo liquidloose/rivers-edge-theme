@@ -7,42 +7,42 @@
 			"palette": [
 				{
 					"color": "#FFFFFF",
-					"name": "Base",
+					"name": "Base Background",
 					"slug": "base"
 				},
 				{
 					"color": "#b0c0c8",
-					"name": "Contrast",
+					"name": "UI Borders & Dividers",
 					"slug": "contrast"
 				},
 				{
-					"color": "#a8e4e8",
-					"name": "Accent 1",
+					"color": "#3B8AC5",
+					"name": "Secondary Actions & Links",
 					"slug": "accent-1"
 				},
 				{
-					"color": "#0a3a42",
-					"name": "Accent 2",
+					"color": "#123A65",
+					"name": "Primary Text & Dark Base",
 					"slug": "accent-2"
 				},
 				{
 					"color": "#e87c4c",
-					"name": "Accent 3",
+					"name": "Primary Call To Action",
 					"slug": "accent-3"
 				},
 				{
 					"color": "#7cd8e0",
-					"name": "Accent 4",
+					"name": "Status Badges & Info Pill",
 					"slug": "accent-4"
 				},
 				{
 					"color": "#000000",
-					"name": "Accent 5",
+					"name": "Black",
 					"slug": "accent-5"
 				},
 				{
 					"color": "#c8d8dc",
-					"name": "Accent 6",
+					"name": "Alternating Section Background",
 					"slug": "accent-6"
 				}
 			]
@@ -111,8 +111,23 @@
 			"fontSizes": [
 				{
 					"name": "Small",
-					"size": "1rem",
-					"slug": "custom-1"
+					"size": "1.25rem",
+					"slug": "small-font-size"
+				},
+				{
+					"name": "Medium",
+					"size": "1.75rem",
+					"slug": "medium-font-size"
+				},
+				{
+					"name": "Large",
+					"size": "2.75rem",
+					"slug": "large-font-size"
+				},
+				{
+					"name": "X-Large",
+					"size": "4rem",
+					"slug": "x-large-font-size"
 				}
 			]
 		},

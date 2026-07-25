@@ -1,14 +1,39 @@
 <?php
 /**
- * Register custom block styles and enqueue per-block stylesheets.
+ * Block style variations for core blocks.
  *
- * Block → style definitions are listed explicitly in rivers_edge_block_style_registry().
+ * This file registers custom **block style variations** — the named options that
+ * appear under **Styles** in the block editor sidebar (e.g. "Rivers Edge",
+ * "Header Group"). Selecting a variation adds an `is-style-{slug}` class to the
+ * block markup on save and on the front end.
  *
+ * Two steps run on `init`:
+ *
+ * 1. **Register variations** — `register_block_style()` adds each entry from
+ *    `rivers_edge_block_style_registry()` to the block's Styles panel. Most core
+ *    blocks get a shared "Rivers Edge" variation; `core/group` also has
+ *    layout-specific variations (header, footer, etc.).
+ *
+ * 2. **Enqueue per-block CSS** — `wp_enqueue_block_style()` registers stylesheets
+ *    at `assets/css/blocks/{slug}.css`. WordPress loads them in the editor and
+ *    on the front end only when that block is present. This function hooks
+ *    `enqueue_block_assets` (and `render_block` when on-demand loading is enabled)
+ *    internally — do not call it from `enqueue_block_assets` yourself.
+ *
+ * CSS convention: `.wp-block-{slug}.is-style-{variation-slug}` (e.g.
+ * `.wp-block-paragraph.is-style-rivers-edge`). Stylesheets live at
+ * `assets/css/blocks/{slug}.css` and, for named variations,
+ * `assets/css/blocks/{slug}-{variation-slug}.css`.
+ *
+ * @see docs/block-styles.md  Full guide for adding or changing variations.
  * @package rivers-edge
  */
 
 /** Shared style variation slug/class suffix for all core blocks (except Group-only layout styles). */
 const RIVERS_EDGE_BLOCK_STYLE = 'rivers-edge';
+
+/** Group block marquee style variation slug/class suffix. */
+const RIVERS_EDGE_MARQUEE_BLOCK_STYLE = 'rivers-edge-marquee';
 
 /**
  * Every core block and its registered style variations.
@@ -199,28 +224,12 @@ function rivers_edge_block_style_registry(): array {
 		),
 		'core/group' => array(
 			array(
-				'name'  => 'reasons-why-and-contact',
-				'label' => __( 'Reasons Why and Contact', 'rivers-edge' ),
-			),
-			array(
-				'name'  => 'friendly-web',
-				'label' => __( 'Friendly Web', 'rivers-edge' ),
-			),
-			array(
-				'name'  => 'header-group',
-				'label' => __( 'Header Group', 'rivers-edge' ),
-			),
-			array(
-				'name'  => 'footer-group',
-				'label' => __( 'Footer Group', 'rivers-edge' ),
-			),
-			array(
-				'name'  => 'core-services',
-				'label' => __( 'Core Services', 'rivers-edge' ),
-			),
-			array(
 				'name'  => RIVERS_EDGE_BLOCK_STYLE,
 				'label' => __( 'Rivers Edge', 'rivers-edge' ),
+			),
+			array(
+				'name'  => RIVERS_EDGE_MARQUEE_BLOCK_STYLE,
+				'label' => __( 'Rivers Edge Marquee', 'rivers-edge' ),
 			),
 		),
 		'core/heading' => array(
@@ -599,7 +608,10 @@ function rivers_edge_block_style_registry(): array {
 }
 
 /**
- * Register all styles from the registry.
+ * Register block style variations from the registry.
+ *
+ * Each variation becomes a selectable option in the block editor Styles panel.
+ * The chosen slug is persisted as `is-style-{name}` on the block's className.
  */
 function rivers_edge_register_block_styles_from_registry(): void {
 	foreach ( rivers_edge_block_style_registry() as $block_name => $styles ) {
@@ -610,29 +622,44 @@ function rivers_edge_register_block_styles_from_registry(): void {
 }
 
 /**
- * Enqueue stylesheet per core block (editor + front when block present).
+ * Register per-block stylesheets for use with style variations.
+ *
+ * Loads `assets/css/blocks/{slug}.css` plus any `{slug}-{style-name}.css`
+ * files that exist for registered variations on that block.
+ *
+ * Does not enqueue CSS immediately — `wp_enqueue_block_style()` defers loading
+ * until the block is rendered (front end) or edited (block editor).
  */
 function rivers_edge_enqueue_core_block_styles(): void {
-	foreach ( rivers_edge_block_style_registry() as $block_name => $_styles ) {
-		$slug = preg_replace( '#^core/#', '', $block_name );
-		$rel  = 'assets/css/blocks/' . $slug . '.css';
-		$path = get_theme_file_path( $rel );
-		$uri  = get_theme_file_uri( $rel );
+	foreach ( rivers_edge_block_style_registry() as $block_name => $styles ) {
+		$slug       = preg_replace( '#^core/#', '', $block_name );
+		$file_slugs = array( $slug );
 
-		if ( ! is_readable( $path ) ) {
-			continue;
+		foreach ( $styles as $style ) {
+			$file_slugs[] = $slug . '-' . $style['name'];
 		}
 
-		wp_enqueue_block_style(
-			$block_name,
-			array(
-				'handle' => 'rivers-edge-' . str_replace( '/', '-', $slug ),
-				'src'    => $uri,
-				'path'   => $path,
-			)
-		);
+		foreach ( array_unique( $file_slugs ) as $file_slug ) {
+			$rel  = 'assets/css/blocks/' . $file_slug . '.css';
+			$path = get_theme_file_path( $rel );
+			$uri  = get_theme_file_uri( $rel );
+
+			if ( ! is_readable( $path ) ) {
+				continue;
+			}
+
+			wp_enqueue_block_style(
+				$block_name,
+				array(
+					'handle' => 'rivers-edge-' . str_replace( '/', '-', $file_slug ),
+					'src'    => $uri,
+					'path'   => $path,
+				)
+			);
+		}
 	}
 }
 
+// Register variations first, then register their stylesheets (both on init).
 add_action( 'init', 'rivers_edge_register_block_styles_from_registry', 10 );
 add_action( 'init', 'rivers_edge_enqueue_core_block_styles', 11 );

@@ -5,6 +5,7 @@
  * @package rivers-edge
  */
 
-.wp-block-image.is-style-rivers-edge {
+.wp-block-image.is-style-rivers-edge img{
 	/* Theme overrides when this variation is selected */
+	box-shadow: none;
 }
