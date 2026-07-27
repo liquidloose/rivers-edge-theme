@@ -15,3 +15,36 @@ function preload_critical_roboto_fonts() {
 }
 add_action('wp_head', 'preload_critical_roboto_fonts', 1);
 
+/**
+ * Output a meta description for search engines.
+ * Singular pages/posts use the excerpt; otherwise the site tagline / fallback.
+ */
+function rivers_edge_meta_description() {
+	$description = get_bloginfo( 'description', 'display' );
+
+	if ( is_singular() ) {
+		$excerpt = get_the_excerpt();
+		if ( is_string( $excerpt ) && $excerpt !== '' ) {
+			$description = $excerpt;
+		}
+	}
+
+	if ( ! is_string( $description ) || $description === '' ) {
+		$description = "River's Edge — web development focused on speed and accessibility.";
+	}
+
+	$description = wp_strip_all_tags( $description );
+	$description = preg_replace( '/\s+/', ' ', $description );
+	$description = trim( $description );
+
+	if ( strlen( $description ) > 160 ) {
+		$description = substr( $description, 0, 157 ) . '...';
+	}
+
+	printf(
+		'<meta name="description" content="%s" />' . "\n",
+		esc_attr( $description )
+	);
+}
+add_action( 'wp_head', 'rivers_edge_meta_description', 1 );
+
