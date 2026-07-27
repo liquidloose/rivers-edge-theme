@@ -4,7 +4,7 @@
 
 /* Rivers Edge base variation (registered for core/group with other theme layouts below) */
 .wp-block-group.is-style-rivers-edge {
-	/* Add layout tokens when using the Rivers Edge style */
+    /* Add layout tokens when using the Rivers Edge style */
 }
 
 /* Reasons Why style */
@@ -58,26 +58,38 @@ button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_no_style {
     border-radius: 30px;
     font-size: var(--wp--preset--font-size--small-font-size);
     border: 1px solid #b0c0c8;
-  }
-  
-  button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_no_style:hover {
+}
+
+button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_no_style:hover {
     cursor: pointer;
     background: white;
     border: 1px solid #b0c0c8;
-  }
-  
-  .fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 {
+}
+
+.fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 {
     border-color: var(--wp--preset--color--accent-2) !important;
-  }
-  
-  .fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-form-control,
-  .fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-input--content input,
-  .fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-input--content textarea,
-  .fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-input--content select {
+}
+
+.fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-form-control,
+.fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-input--content input,
+.fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-input--content textarea,
+.fluentform.fluentform_wrapper_1.ff_guten_block.ff_guten_block-1 .ff-el-input--content select {
     border-style: solid;
     border-color: var(--wp--preset--color--accent-2) !important;
-  }
+}
 
-  .wp-block-group.is-nowrap.is-layout-flex.wp-container-core-group-is-layout-ef7a0023.wp-block-group-is-layout-flex {
+.wp-block-group.is-nowrap.is-layout-flex.wp-container-core-group-is-layout-ef7a0023.wp-block-group-is-layout-flex {
     padding-left: 18px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+@media only screen and (max-width: 795px) {
+    .wp-block-group.is-style-default.is-horizontal.is-content-justification-space-between.is-layout-flex.wp-container-core-group-is-layout-81bb2019.wp-block-group-is-layout-flex {
+        display: flex;
+        justify-content: center;
+    }
 }
